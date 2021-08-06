@@ -22,10 +22,12 @@
   file: path=/usr/share/tomcat/ owner=tomcat group=tomcat state=directory recurse=yes
 
 - name: Configure Tomcat server
+  become: yes
   template: src=server.xml dest=/usr/share/tomcat/conf/
   notify: restart tomcat
 
 - name: Configure Tomcat users
+  become: yes
   template: src=tomcat-users.xml dest=/usr/share/tomcat/conf/
   notify: restart tomcat
 
@@ -34,6 +36,7 @@
 
 - name: Start Tomcat
   service: name=tomcat state=started enabled=yes
+  become: yes
 
 
 - name: wait for tomcat to start
