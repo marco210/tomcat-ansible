@@ -2,7 +2,7 @@
 # This playbook deploys a simple standalone Tomcat 7 server.
 - name: tomcat
   hosts: monitor-server
-  remote_user: ansible
+  remote_user: '{{ user_name }}'
   become: yes
 
   roles:
